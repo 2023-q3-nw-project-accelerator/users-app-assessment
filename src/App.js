@@ -10,14 +10,13 @@ function App() {
   const [users, setUsers] = useState([])
 
   const API_URL = "https://users-app-backend.onrender.com/users"
-  // TODO: Fetch data here
 
   useEffect(() => {
     console.log(`<App/> useEffect FIRED`)
 
     async function fetchData() {
       const response = await fetch(`${API_URL}`)
-      const json =  await response.json()
+      const json = await response.json()
         console.log(`<App/> useEffect() fetch data`, json)
 
        const {data} = json
