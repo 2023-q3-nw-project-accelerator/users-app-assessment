@@ -15,10 +15,9 @@ function App() {
   const filteredUser = users.filter(el => {
     return (el.company + el.country + el.name).toLowerCase().includes(searchInput.toLowerCase())
   });
-  console.log("rendering app")
+  
   ////////////////////////////////////////////////
   useEffect(() => {
-    console.log('call fetch');
     setIsLoading(true);
     fe_.getAllUsers(res => {
       if(res.data){
