@@ -1,0 +1,13 @@
+.on-loading-div{
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.on-loading-div > div{
+  padding: 40px;
+  background-color: darkblue;
+  color: white;
+  border-radius: 5px;
+}
