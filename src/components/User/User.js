@@ -1,6 +1,6 @@
-import './User.css';
+import "./User.css";
 
-const User = ({ user }) => {
+const User = ({ user, expanded, handleToggleExpanded }) => {
   const { about, age, company, country, name, photo } = user;
 
   return (
@@ -16,12 +16,18 @@ const User = ({ user }) => {
           <li>Company: {company}</li>
         </ul>
         <div className="User__about">
-          <h3>About {name.split(' ')[0]}:</h3>
-          <p>{about}</p>
+          {expanded && (
+            <div className="User__about-text">
+              <h3>About {name.split(" ")[0]}:</h3>
+              <p>{about}</p>
+            </div>
+          )}
         </div>
       </div>
       <div className="User__controls">
-        <button>click me</button>
+        <button onClick={() => handleToggleExpanded(user.id)}>
+          {expanded ? "Show less" : "Show more"}
+        </button>
       </div>
     </section>
   );
