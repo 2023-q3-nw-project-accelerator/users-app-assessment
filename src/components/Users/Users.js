@@ -12,16 +12,14 @@ const Users = ({ users }) => {
     setAboutToggleState(ret);
   })
   gereral_.setCollapseAllAbout(() =>{
-    const ret = {};
-    for(let {id} of users) ret[id] = false;
-    setAboutToggleState(ret);
+    setAboutToggleState({});
   })
   const handleUserToggleAbout = (id) => {
     setAboutToggleState(pv => {
       if(pv[id]){
         return {...pv, [id]: !pv[id]};
       }else{
-        return {...pv, [id]: true}
+        return {...pv, [id]: true};
       }
     });
   }

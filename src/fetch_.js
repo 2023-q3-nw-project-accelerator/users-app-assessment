@@ -20,7 +20,7 @@ function fetch_get(url, callback){
   
   fetch(url, body)
     .then(response => {
-      return response.json()
+      return response.json();
     })
     .then((data) => {
       callback(data);
@@ -36,8 +36,7 @@ const getAllUsers = (callback) => {
     callback(res);
   });
 }
-
 ////////////////////////////////////////////////////
-const entry = {getAllUsers}
+const entry = {getAllUsers};
 
 export default entry;

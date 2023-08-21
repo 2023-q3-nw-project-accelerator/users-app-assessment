@@ -12,10 +12,9 @@ function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState("");
   const [searchInput, setSearchInput] = useState("");
-  const filteredUser = users.filter(el => {
-    return (el.company + el.country + el.name).toLowerCase().includes(searchInput.toLowerCase())
+  const filteredUser = users.filter(({company, country, name}) => {
+    return (company + country + name).toLowerCase().includes(searchInput.toLowerCase())
   });
-  
   ////////////////////////////////////////////////
   useEffect(() => {
     setIsLoading(true);

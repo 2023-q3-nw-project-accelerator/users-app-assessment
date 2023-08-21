@@ -30,7 +30,7 @@
     display: none;
 }
 
-@media screen and (max-width: 350px) {
+@media screen and (max-width: 364px) {
     .App {
         width: 96vw;
         height: 100vh;

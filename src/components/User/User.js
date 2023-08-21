@@ -21,7 +21,9 @@ const User = ({ user, handleUserToggleAbout, aboutState = false }) => {
         </div>
       </div>
       <div className="User__controls">
-        <button onClick={()=>handleUserToggleAbout(id)}>{!aboutState ?"Show":"Hide"}</button>
+        <button onClick={()=>handleUserToggleAbout(id)}>
+          { !aboutState ? "Show More" : "Show Less" }
+        </button>
       </div>
     </section>
   );
