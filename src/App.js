@@ -4,7 +4,6 @@ import "./App.css"
 import { useEffect, useState } from "react"
 import Loading from "./components/Loading/Loading"
 import Error from "./components/Error/Error"
-import Grid from "./components/Grid/Grid"
 
 function App() {
   // TODO: Fetch data here
