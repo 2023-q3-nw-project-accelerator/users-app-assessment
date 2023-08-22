@@ -11,6 +11,7 @@ function App() {
   const [userData, setUserData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const [input, setInput] = useState("");
 
   useEffect(() => {
     async function fetchData() {
@@ -36,6 +37,21 @@ function App() {
     fetchData();
   }, []);
 
+  const handleChange = (e) => {
+    setInput(e.target.value);
+  };
+
+  let dataToDisplay = userData;
+
+  if (input) {
+    dataToDisplay = userData.filter((user) => {
+      const { name, country, company } = user;
+      const userDetails = `${name} ${country} ${company}`.toLowerCase();
+
+      return userDetails.includes(input.toLowerCase());
+    });
+  }
+
   const renderContent = () => {
     if (loading) {
       return <Loading />;
@@ -44,14 +60,23 @@ function App() {
     } else {
       return (
         <div>
-          <SearchBar />
-          <Users userData={userData} />
+          <SearchBar input={input} handleChange={handleChange} />
+          <Users input={input} userData={dataToDisplay} />
         </div>
       );
     }
   };
 
-  console.log("data", userData, "loading", loading, "error", error);
+  console.log(
+    "data",
+    userData,
+    "loading",
+    loading,
+    "error",
+    error,
+    "input",
+    input
+  );
 
   return (
     <div className="App">

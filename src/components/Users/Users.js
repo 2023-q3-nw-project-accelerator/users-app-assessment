@@ -1,13 +1,15 @@
-import User from '../User/User';
-import './Users.css';
+import User from "../User/User";
+import "./Users.css";
 
-const Users = ({ userData }) => {
+const Users = ({ input, userData }) => {
   return (
     <article className="Users">
-      {userData.map((user) => {
-        const { id } = user;
-        return <User key={id} user={user} />;
-      })}
+      {userData.length
+        ? userData.map((user) => {
+            const { id } = user;
+            return <User key={id} user={user} />;
+          })
+        : `No results for ${input}!`}
     </article>
   );
 };
