@@ -1,0 +1,11 @@
+@media screen and (max-width: 530px) {
+    .SearchBar {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        justify-content: center;
+    }
+    .SearchBar button {
+        padding: 0;
+        margin: 0;
+    }
+  }

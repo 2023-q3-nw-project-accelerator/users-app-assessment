@@ -1,3 +1,4 @@
+import Container from "./components/Container/Container";
 import Error from "./components/Error/Error";
 import Loading from "./components/Loading/Loading";
 import SearchBar from "./components/SearchBar/SearchBar";
@@ -80,12 +81,6 @@ function App() {
     } else {
       return (
         <div>
-          <SearchBar
-            input={input}
-            handleChange={handleChange}
-            handleExpandAll={handleExpandAll}
-            handleCollapseAll={handleCollapseAll}
-          />
           <Users
             input={input}
             userData={dataToDisplay}
@@ -111,7 +106,19 @@ function App() {
   return (
     <div className="App">
       <h1>Our Users</h1>
-      {renderContent()}
+      <SearchBar
+        input={input}
+        handleChange={handleChange}
+        handleExpandAll={handleExpandAll}
+        handleCollapseAll={handleCollapseAll}
+      />
+      <Container
+        center={Boolean(error || loading || !dataToDisplay.length)}
+        loading={loading}
+        error={error}
+      >
+        {renderContent()}
+      </Container>
     </div>
   );
 }
