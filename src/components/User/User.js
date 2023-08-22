@@ -1,6 +1,7 @@
 import './User.css';
 
 const User = ({ user }) => {
+  console.log(`User Rendered!`)
   const { about, age, company, country, name, photo } = user;
 
   return (

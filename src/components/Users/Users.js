@@ -2,6 +2,7 @@ import User from '../User/User';
 import './Users.css';
 
 const Users = ({ users = [] }) => {
+  console.log(`Users Rendered!`)
   return (
     <article className="Users">
       {users.map((user) => {
