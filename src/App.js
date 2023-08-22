@@ -1,6 +1,7 @@
 import Users from './components/Users/Users';
 import Loading from './components/Loading/Loading';
 import Error from './components/Error/Error';
+import Container from './components/Container/Container';
 import './App.css';
 
 import { useEffect, useState } from 'react';
@@ -26,7 +27,7 @@ function App() {
           console.log(`<App/> useEffect() fetch data`, json)
   
          const {data} = json
-         data.split(',')
+        //  data.split(',')
          setUsers(data) 
         setLoading(false)
       }catch (err) {
@@ -54,7 +55,9 @@ function App() {
   return (
     <div className="App">
       <h1>Our Users</h1>
+      <Container center={Boolean (error || loading)}>
       {renderContent()}
+      </Container>
     </div>
   );
 }

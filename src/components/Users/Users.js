@@ -4,6 +4,18 @@ import SearchBar from '../SearchBar/SearchBar';
 
 const Users = ({ users = [] }) => {
   console.log(`Users Rendered!`)
+
+// let dataToDisplay = users
+
+// dataToDisplay = users.filter((user) => {
+//   const name = `${name}`.toLowerCase()
+//   const country = `${country}`.toLowerCase()
+//   const company = `${company}`.toLowerCase()
+
+//   return 
+// })
+
+
   return (
     <div className='Users__searchbar'>
     <SearchBar/>
