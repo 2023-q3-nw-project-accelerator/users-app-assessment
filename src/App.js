@@ -1,8 +1,10 @@
+import "./App.css";
+import { useEffect, useState } from "react";
+import Loading from "./components/Loading/Loading"
+import Error from "./components/Error/Error";
+import Container from "./components/Container/Container";
 import SearchBar from "./components/SearchBar/SearchBar";
 import Users from "./components/Users/Users";
-import "./App.css";
-import { useEffect } from "react";
-import { useState } from "react";
 
 const API_URL = "https://users-app-backend.onrender.com/users";
 
@@ -36,20 +38,20 @@ function App() {
   }, []);
 
   const renderContent = () => {
-    if(loading){
-      return 
-    } else if(error) {
-return
+    if (loading) {
+      return <Loading />;
+    } else if (error) {
+      return <Error/>;
     } else {
-      return
+      return <Users users={userData}/>;
     }
-  }
+  };
 
   return (
     <div className="App">
       <h1>Our Users</h1>
       <SearchBar />
-      <Users />
+      <Container>{renderContent()}</Container>
     </div>
   );
 }
