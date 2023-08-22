@@ -1,4 +1,3 @@
-import SearchBar from './components/SearchBar/SearchBar';
 import Users from './components/Users/Users';
 import Loading from './components/Loading/Loading';
 import './App.css';
@@ -33,7 +32,7 @@ function App() {
   return (
     <div className="App">
       <h1>Our Users</h1>
-      {loading ? <Loading/> : <SearchBar /> && <Users users={users}/>}
+      {loading ? <Loading/> : <Users users={users}/>}
       
     </div>
   );
