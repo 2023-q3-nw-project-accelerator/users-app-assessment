@@ -1,0 +1,13 @@
+@media (min-width: 768px) {
+  .Grid {
+    display: flex;
+  }
+
+  .Grid > *:first-child {
+    flex: 1 1 70%;
+  }
+
+  .Grid > *:nth-child(2) {
+    flex: 1 1 30%;
+  }
+}

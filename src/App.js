@@ -11,6 +11,8 @@ function App() {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState("")
   const [users, setUsers] = useState([])
+  const [input, setInput] = useState("")
+  const [expand, setExpand] = useState([])
 
   const API_URL = "https://users-app-backend.onrender.com/users"
 
@@ -40,6 +42,24 @@ function App() {
     fetchData()
   }, [])
 
+  const handleChange = (e) => {
+    setInput(e.target.value)
+  }
+  const handleExpandAll = () => {}
+
+  const handleCollapseAll = () => {
+    setExpand([])
+  }
+
+  let datatToDisplay = users
+
+  if(input){
+    datatToDisplay = users.filter((user)=>{
+      const {name, country, company }= user
+      const userDetails = `${name} ${country} ${company}`.toLowerCase()
+      return userDetails.includes(input.toLowerCase())
+  })
+
   const renderContent = () => {
     if (loading) {
       return <Loading />
@@ -52,7 +72,13 @@ function App() {
   return (
     <div className="App">
       <h1>Our Users</h1>
-      <SearchBar />
+      <SearchBar
+        expand={expand}
+        handleChange={handleChange}
+        input={input}
+        handleExpandAll={handleExpandAll}
+        handleCollapseAll={handleCollapseAll}
+      />
       <Grid>{renderContent()}</Grid>
     </div>
   )
