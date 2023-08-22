@@ -18,7 +18,7 @@ const Users = ({ users = [], input, expanded, handleToggleExpanded }) => {
     }
 
     if (filteredUsers.length === 0) {
-      return <h1>No results for {input}</h1>;
+      return <h1 className="common-heading">No results for {input}</h1>;
     } else {
       return filteredUsers.map((user) => {
         const { id } = user;

@@ -20,6 +20,7 @@ function App() {
 
   const fetchData = async () => {
     setLoading(true);
+    setError("");
 
     return axios
       .get(API)
@@ -58,9 +59,9 @@ function App() {
 
   const renderContent = () => {
     if (loading) {
-      return <h1>Loading...</h1>;
+      return <h1 className="common-heading">Loading...</h1>;
     } else if (error) {
-      return <h1>Error: {error}</h1>;
+      return <h1 className="common-heading">Error: {error}</h1>;
     } else {
       return (
         <Users
@@ -77,6 +78,7 @@ function App() {
     <div className="App">
       <h1>Our Users</h1>
       <SearchBar input={input} onChange={onChange} />
+
       <button
         onClick={() => {
           handleExpandAll();
@@ -91,6 +93,7 @@ function App() {
       >
         Collapse All
       </button>
+
       {renderContent()}
     </div>
   );
