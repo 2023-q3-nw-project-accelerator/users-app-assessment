@@ -4,6 +4,7 @@ import "./App.css"
 import { useEffect, useState } from "react"
 import Loading from "./components/Loading/Loading"
 import Error from "./components/Error/Error"
+import Grid from "./components/Grid/Grid"
 
 function App() {
   // TODO: Fetch data here
@@ -39,11 +40,20 @@ function App() {
     fetchData()
   }, [])
 
+  const renderContent = () => {
+    if (loading) {
+      return <Loading />
+    } else if (error) {
+      return <Error error={error} />
+    } else {
+      return <Users users={users} />
+    }
+  }
   return (
     <div className="App">
       <h1>Our Users</h1>
       <SearchBar />
-      <Users users={users} />
+      <Grid>{renderContent()}</Grid>
     </div>
   )
 }
