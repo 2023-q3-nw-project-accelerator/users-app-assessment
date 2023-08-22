@@ -1,10 +1,10 @@
 import User from '../User/User';
 import './Users.css';
 
-const Users = ({ users = [] }) => {
+const Users = ({ userData }) => {
   return (
     <article className="Users">
-      {users.map((user) => {
+      {userData.map((user) => {
         const { id } = user;
         return <User key={id} user={user} />;
       })}
