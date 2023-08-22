@@ -12,6 +12,7 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [input, setInput] = useState("");
+  const [expanded, setExpanded] = useState([]);
 
   useEffect(() => {
     async function fetchData() {
@@ -52,6 +53,25 @@ function App() {
     });
   }
 
+  const handleToggleExpanded = (id) => {
+    if (!expanded.includes(id)) {
+      const newExpanded = [...expanded, id];
+      setExpanded(newExpanded);
+    } else {
+      const removed = expanded.filter((currId) => currId !== id);
+      setExpanded(removed);
+    }
+  };
+
+  const handleExpandAll = () => {
+    const allIds = userData.map((user) => user.id);
+    setExpanded(allIds);
+  };
+
+  const handleCollapseAll = () => {
+    setExpanded([]);
+  };
+
   const renderContent = () => {
     if (loading) {
       return <Loading />;
@@ -60,8 +80,18 @@ function App() {
     } else {
       return (
         <div>
-          <SearchBar input={input} handleChange={handleChange} />
-          <Users input={input} userData={dataToDisplay} />
+          <SearchBar
+            input={input}
+            handleChange={handleChange}
+            handleExpandAll={handleExpandAll}
+            handleCollapseAll={handleCollapseAll}
+          />
+          <Users
+            input={input}
+            userData={dataToDisplay}
+            expanded={expanded}
+            handleToggleExpanded={handleToggleExpanded}
+          />
         </div>
       );
     }

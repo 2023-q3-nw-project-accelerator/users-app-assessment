@@ -1,20 +1,7 @@
-import { useState } from "react";
 import User from "../User/User";
 import "./Users.css";
 
-const Users = ({ input, userData }) => {
-  const [expanded, setExpanded] = useState([]);
-
-  const handleToggleExpanded = (id) => {
-    if (!expanded.includes(id)) {
-      const newExpanded = [...expanded, id];
-      setExpanded(newExpanded);
-    } else {
-      const removed = expanded.filter((currId) => currId !== id);
-      setExpanded(removed);
-    }
-  };
-
+const Users = ({ input, userData, expanded, handleToggleExpanded }) => {
   console.log("expanded", expanded);
 
   return (
