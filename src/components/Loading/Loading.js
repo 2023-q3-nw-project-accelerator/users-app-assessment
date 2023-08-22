@@ -4,7 +4,9 @@ import './Loading.css'
 function Loading() {
     console.log(`<Loading/> Rendered!`)
   return (
-    <div>Loading...</div>
+    <div className='Loading'>
+    Loading...
+    </div>
   )
 }
 
