@@ -7,12 +7,11 @@ import Error from "./components/Error/Error"
 import Grid from "./components/Grid/Grid"
 
 function App() {
-  // TODO: Fetch data here
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState("")
   const [users, setUsers] = useState([])
   const [input, setInput] = useState("")
-  const [expand, setExpand] = useState([])
+  const [expanded, setExpanded] = useState([])
 
   const API_URL = "https://users-app-backend.onrender.com/users"
 
@@ -23,7 +22,7 @@ function App() {
       const response = await fetch(`${API_URL}`)
       const json = await response.json()
       const { data } = json
-      console.log("<App /> useEffect() fetched data", data)
+
       if (response.ok) {
         setUsers(data)
         setLoading(false)
@@ -32,7 +31,6 @@ function App() {
         setLoading(false)
       }
     } catch (error) {
-      console.log(`<App /> useEffect error:, ${error.message}`)
       setError(error.message)
       setLoading(false)
     }
@@ -42,23 +40,41 @@ function App() {
     fetchData()
   }, [])
 
+  const toggleExpand = (id) => {
+    if (!expanded.includes(id)) {
+      const newExpanded = [...expanded, id]
+      setExpanded(newExpanded)
+    } else {
+      const removeId = expanded.filter((currentId) => currentId !== id)
+      setExpanded(removeId)
+    }
+  }
+
+  const handleExpandAll = (id) => {
+    const userId = users.map((user) => user.id)
+    setExpanded(userId)
+  }
+
+  const handleCollapseAll = () => {
+    setExpanded([])
+  }
+
   const handleChange = (e) => {
     setInput(e.target.value)
   }
-  const handleExpandAll = () => {}
 
-  const handleCollapseAll = () => {
-    setExpand([])
-  }
+  let dataToDisplay = users
 
-  let datatToDisplay = users
-
-  if(input){
-    datatToDisplay = users.filter((user)=>{
-      const {name, country, company }= user
+  if (input) {
+    dataToDisplay = users.filter((user) => {
+      const { name, country, company } = user
       const userDetails = `${name} ${country} ${company}`.toLowerCase()
       return userDetails.includes(input.toLowerCase())
-  })
+    })
+    if (dataToDisplay.length === 0) {
+      return <div className="Grid"> no result for {input}</div>
+    }
+  }
 
   const renderContent = () => {
     if (loading) {
@@ -66,20 +82,22 @@ function App() {
     } else if (error) {
       return <Error error={error} />
     } else {
-      return <Users users={users} />
+      return (
+        <Users users={users} expanded={expanded} toggleExpand={toggleExpand} />
+      )
     }
   }
+
   return (
     <div className="App">
       <h1>Our Users</h1>
       <SearchBar
-        expand={expand}
         handleChange={handleChange}
         input={input}
         handleExpandAll={handleExpandAll}
         handleCollapseAll={handleCollapseAll}
       />
-      <Grid>{renderContent()}</Grid>
+      <Grid center={Boolean(error || loading)}>{renderContent()}</Grid>
     </div>
   )
 }
