@@ -15,14 +15,16 @@ const User = ({ expanded, toggleExpand, user }) => {
           <li>Country: {country}</li>
           <li>Company: {company}</li>
         </ul>
-        <div className={`User__about ${expanded} ? 'expanded' : ''}`}>
-          <h3>About {name.split(" ")[0]}:</h3>
-          <p>{about}</p>
-        </div>
+        {expanded && (
+          <div className="User__about">
+            <h3>About {name.split(" ")[0]}:</h3>
+            <p>{about}</p>
+          </div>
+        )}
       </div>
       <div className="User__controls">
         <button onClick={toggleExpand}>
-          {expanded ? "show more..." : "show less..."}
+          {expanded ? "show less..." : "show more..."}
         </button>
       </div>
     </section>

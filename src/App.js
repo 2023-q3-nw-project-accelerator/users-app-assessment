@@ -83,7 +83,11 @@ function App() {
       return <Error error={error} />
     } else {
       return (
-        <Users users={users} expanded={expanded} toggleExpand={toggleExpand} />
+        <Users
+          users={dataToDisplay}
+          expanded={expanded}
+          toggleExpand={toggleExpand}
+        />
       )
     }
   }

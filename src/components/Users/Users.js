@@ -10,8 +10,8 @@ const Users = ({ toggleExpand, expanded, users = [] }) => {
           <User
             key={id}
             user={user}
-            expanded={expanded}
-            toggleExpand={toggleExpand}
+            expanded={expanded.includes(user.id)}
+            toggleExpand={() => toggleExpand(user.id)}
           />
         )
       })}

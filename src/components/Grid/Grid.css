@@ -11,3 +11,14 @@
     flex: 1 1 30%;
   }
 }
+
+@media (max-width: 400px) {
+  .Grid {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .Grid > * {
+    flex: 1 0 auto;
+  }
+}
