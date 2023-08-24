@@ -1,3 +1,15 @@
+.Grid {
+  width: 60vw;
+  height: 100vh;
+  margin: 0 auto;
+}
+
+.Grid--center {
+  align-items: center;
+  display: grid;
+  justify-content: center;
+}
+
 @media (min-width: 768px) {
   .Grid {
     display: flex;
