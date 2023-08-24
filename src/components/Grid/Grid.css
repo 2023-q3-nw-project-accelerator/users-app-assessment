@@ -12,13 +12,15 @@
   }
 }
 
-@media (max-width: 400px) {
+@media (max-width: 350px) {
   .Grid {
     flex-direction: column;
     align-items: stretch;
+    padding: 0;
   }
 
   .Grid > * {
     flex: 1 0 auto;
+    margin-bottom: 10px;
   }
 }

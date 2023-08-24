@@ -24,7 +24,7 @@ const User = ({ expanded, toggleExpand, user }) => {
       </div>
       <div className="User__controls">
         <button onClick={toggleExpand}>
-          {expanded ? "show less" : "show more3"}
+          {expanded ? "show less" : "show more"}
         </button>
       </div>
     </section>
