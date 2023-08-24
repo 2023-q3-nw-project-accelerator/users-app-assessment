@@ -1,4 +1,5 @@
 import React from 'react'
+import "./Container.css";
 
 const Container = ({ center, children, scroll = true }) => {
     let classNames = ["Container"];
@@ -10,7 +11,6 @@ const Container = ({ center, children, scroll = true }) => {
       classNames.push("Container--scroll");
     }
   
-    console.log(`<Container /> rendered!`);
     return <div className={classNames.join(" ")}>{children}</div>;
   };
   export default Container;
