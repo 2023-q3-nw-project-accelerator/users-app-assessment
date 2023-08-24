@@ -1,13 +1,13 @@
 import './SearchBar.css';
 
-const SearchBar = ({search, handleChange, handleExpandAll, handleCollapseAll}) => {
+const SearchBar = ({searchInput, handleChange, handleExpandAll, handleCollapseAll}) => {
   
   
   
   return (
     <div>
       <input 
-    value={search}
+    value={searchInput}
     type="text" 
     placeholder="Search by name, country, or company"
     onChange={handleChange} />

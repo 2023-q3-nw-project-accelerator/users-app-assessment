@@ -1,7 +1,9 @@
 import './User.css';
 
-const User = ({ user }) => {
+const User = ({ user, expanded, onClick }) => {
   const { about, age, company, country, name, photo } = user;
+
+
 
   return (
     <section className="User">
@@ -15,13 +17,13 @@ const User = ({ user }) => {
           <li>Country: {country}</li>
           <li>Company: {company}</li>
         </ul>
-        <div className="User__about">
+        {expanded && <div className="User__about">
           <h3>About {name.split(' ')[0]}:</h3>
           <p>{about}</p>
-        </div>
+        </div>}
       </div>
       <div className="User__controls">
-        <button>click me</button>
+         <button onClick={onClick}>{expanded ? "Show Less" : "Show More"}</button>  
       </div>
     </section>
   );
