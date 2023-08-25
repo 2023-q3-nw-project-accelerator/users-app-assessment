@@ -30,9 +30,14 @@ function App() {
       return <Error error={error} />;
     } else {
       return usersToDisplay.length ? (
-        <Users users={usersToDisplay} expand={expand} />
+        <Users
+          users={usersToDisplay}
+          expand={expand}
+          handleSingleExpand={handleSingleExpand}
+          handleSingleCollapse={handleSingleCollapse}
+        />
       ) : (
-        <h3>No Users To Display with the search of {searchInput}</h3>
+        <h3 className="error">No Users To Display with the search of {searchInput}</h3>
       );
     }
   };
@@ -44,7 +49,6 @@ function App() {
     axios
       .get(`${PORT}`)
       .then((res) => {
-        // res.map((el) => el);
         const responseIsOk = res.status === 200;
         const data = res.data.data;
         const error = res.data;
@@ -81,27 +85,43 @@ function App() {
   // expands all the users about section
   const handleExpandALL = () => {
     const userIds = usersToDisplay.map((user) => user.id);
-    console.log(userIds);
     setExpand(userIds);
   };
 
   //Collapse all the users about section
   const handleCollapseALL = () => {
     const userIds = [];
-    console.log(userIds);
+    setExpand(userIds);
+  };
+
+  // expands one users about section
+  const handleSingleExpand = (e) => {
+    e.preventDefault();
+    const userIds = [...expand, e.currentTarget.value];
+    setExpand(userIds);
+  };
+
+  //Collapse one users about section
+  const handleSingleCollapse = (e) => {
+    e.preventDefault();
+    const userIds = expand.filter((id) => id !== e.currentTarget.value);
     setExpand(userIds);
   };
 
   return (
     <div className="App">
-      <h1>Our Users</h1>
-      <SearchBar
-        value={searchInput}
-        onChange={handleChange}
-        handleExpandALL={handleExpandALL}
-        handleCollapseALL={handleCollapseALL}
-      />
-      <Users />
+      {!loading && !error.length ? <h1>Our Users</h1> : ""}
+      {!loading && !error.length ? (
+        <SearchBar
+          value={searchInput}
+          onChange={handleChange}
+          handleExpandALL={handleExpandALL}
+          handleCollapseALL={handleCollapseALL}
+        />
+      ) : (
+        ""
+      )}
+
       {/* if loading display Loading component else if error display error else display Users component */}
       {<Container center={error || loading}>{render(loading, error)}</Container>}
     </div>
