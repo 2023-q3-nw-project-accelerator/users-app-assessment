@@ -71,9 +71,6 @@ function App() {
       const userDetails = `${name} ${country} ${company}`.toLowerCase()
       return userDetails.includes(input.toLowerCase())
     })
-    if (dataToDisplay.length === 0) {
-      return <div className="Grid"> no result for {input}</div>
-    }
   }
 
   const renderContent = () => {
@@ -84,6 +81,7 @@ function App() {
     } else {
       return (
         <Users
+          input={input}
           users={dataToDisplay}
           expanded={expanded}
           toggleExpand={toggleExpand}
@@ -101,7 +99,9 @@ function App() {
         handleExpandAll={handleExpandAll}
         handleCollapseAll={handleCollapseAll}
       />
-      <Grid center={Boolean(error || loading)}>{renderContent()}</Grid>
+      <Grid center={Boolean(error || loading || !dataToDisplay.length)}>
+        {renderContent()}
+      </Grid>
     </div>
   )
 }

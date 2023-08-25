@@ -1,20 +1,22 @@
 import User from "../User/User"
 import "./Users.css"
 
-const Users = ({ toggleExpand, expanded, users = [] }) => {
+const Users = ({ input, toggleExpand, expanded, users = [] }) => {
   return (
     <article className="Users">
-      {users.map((user) => {
-        const { id } = user
-        return (
-          <User
-            key={id}
-            user={user}
-            expanded={expanded.includes(user.id)}
-            toggleExpand={() => toggleExpand(user.id)}
-          />
-        )
-      })}
+      {users.length
+        ? users.map((user) => {
+            const { id } = user
+            return (
+              <User
+                key={id}
+                user={user}
+                expanded={expanded.includes(user.id)}
+                toggleExpand={() => toggleExpand(user.id)}
+              />
+            )
+          })
+        : `no results for: ${input}`}
     </article>
   )
 }

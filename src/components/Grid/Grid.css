@@ -5,34 +5,15 @@
 }
 
 .Grid--center {
-  align-items: center;
   display: grid;
+  align-items: center;
   justify-content: center;
 }
 
-@media (min-width: 768px) {
+@media only screen and (max-width: 600px) {
   .Grid {
-    display: flex;
-  }
-
-  .Grid > *:first-child {
-    flex: 1 1 70%;
-  }
-
-  .Grid > *:nth-child(2) {
-    flex: 1 1 30%;
-  }
-}
-
-@media (max-width: 350px) {
-  .Grid {
-    flex-direction: column;
-    align-items: stretch;
-    padding: 0;
-  }
-
-  .Grid > * {
-    flex: 1 0 auto;
-    margin-bottom: 10px;
+    display: grid;
+    align-items: center;
+    justify-content: center;
   }
 }

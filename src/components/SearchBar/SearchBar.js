@@ -7,7 +7,7 @@ const SearchBar = ({
   handleCollapseAll,
 }) => {
   return (
-    <div>
+    <div className="Searchbar">
       <input
         value={input}
         onChange={handleChange}
