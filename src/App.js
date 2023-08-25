@@ -13,6 +13,7 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [searchInput, setSearchInput] = useState("");
+  const [expand, setExpand] = useState([]);
 
   let usersToDisplay = userData;
 
@@ -28,11 +29,15 @@ function App() {
     } else if (error) {
       return <Error error={error} />;
     } else {
-      return usersToDisplay.length ? <Users users={usersToDisplay} /> : <h3>No Users To Display</h3>;
+      return usersToDisplay.length ? (
+        <Users users={usersToDisplay} expand={expand} />
+      ) : (
+        <h3>No Users To Display with the search of {searchInput}</h3>
+      );
     }
   };
 
-  useEffect(() => {
+  const fetchData = () => {
     const PORT = process.env.REACT_APP_API_URL;
 
     // Fetch users data
@@ -62,16 +67,40 @@ function App() {
         setError(error.message);
         setLoading(false);
       });
+  };
+
+  useEffect(() => {
+    fetchData();
   }, []);
 
+  // Updates the searchInput state with the user input
   const handleChange = (e) => {
     setSearchInput(e.target.value);
+  };
+
+  // expands all the users about section
+  const handleExpandALL = () => {
+    const userIds = usersToDisplay.map((user) => user.id);
+    console.log(userIds);
+    setExpand(userIds);
+  };
+
+  //Collapse all the users about section
+  const handleCollapseALL = () => {
+    const userIds = [];
+    console.log(userIds);
+    setExpand(userIds);
   };
 
   return (
     <div className="App">
       <h1>Our Users</h1>
-      <SearchBar value={searchInput} onChange={handleChange} />
+      <SearchBar
+        value={searchInput}
+        onChange={handleChange}
+        handleExpandALL={handleExpandALL}
+        handleCollapseALL={handleCollapseALL}
+      />
       <Users />
       {/* if loading display Loading component else if error display error else display Users component */}
       {<Container center={error || loading}>{render(loading, error)}</Container>}
