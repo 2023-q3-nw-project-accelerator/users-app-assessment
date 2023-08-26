@@ -11,6 +11,7 @@ function App() {
   const [userData, setUserData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const [searchInput, setSearchInput] = useState("");
 
   // TODO: Fetch data here
 
@@ -38,20 +39,38 @@ function App() {
     fetchData();
   }, []);
 
+  const handleChange = (e) => {
+    setSearchInput(e.target.value);
+  };
+
+  let dataToDisplay = userData;
+  if (searchInput) {
+    dataToDisplay = userData.filter((user) => {
+      const { name, country, company } = user;
+      let searchLowerCase = searchInput.toLowerCase();
+
+      return (
+        name.toLowerCase().includes(searchLowerCase) ||
+        country.toLowerCase().includes(searchLowerCase) ||
+        company.toLowerCase().includes(searchLowerCase)
+      );
+    });
+  }
+
   const renderContent = () => {
     if (loading) {
       return <Loading />;
     } else if (error) {
       return <Error error={error} />;
     } else {
-      return <Users users={userData} />;
+      return <Users users={dataToDisplay} />;
     }
   };
 
   return (
     <div className="App">
       <h1>Our Users</h1>
-      <SearchBar />
+      <SearchBar searchInput={searchInput} handleChange={handleChange} />
       {renderContent()}
     </div>
   );
