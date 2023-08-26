@@ -63,7 +63,7 @@ function App() {
     } else if (error) {
       return <Error error={error} />;
     } else {
-      return <Users users={dataToDisplay} />;
+      return <Users users={dataToDisplay} searchInput={searchInput} />;
     }
   };
 
