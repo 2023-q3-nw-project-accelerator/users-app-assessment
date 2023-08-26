@@ -8,17 +8,14 @@ function App() {
   const { data, loading, error } = useAxios(API_URL);
   const [input, setInput] = useState("");
 
-  console.log(data, loading, "error ", error);
-  function filterUsers() {
-    return data.filter((user) => {
-      return (
-        user.name.toLowerCase().includes(input.toLowerCase()) ||
-        user.country.toLowerCase().includes(input.toLowerCase()) ||
-        user.company.toLowerCase().includes(input.toLowerCase())
-      );
-    });
-  }
-  console.log(input);
+  const filteredUsers = data.filter((user) => {
+    return (
+      user.name.toLowerCase().includes(input.toLowerCase()) ||
+      user.country.toLowerCase().includes(input.toLowerCase()) ||
+      user.company.toLowerCase().includes(input.toLowerCase())
+    );
+  });
+
   function renderContent() {
     if (loading) {
       return <p>Loading...</p>;
@@ -30,11 +27,16 @@ function App() {
       return (
         <>
           <SearchBar value={input} onChange={setInput} />
-          <Users users={filterUsers()} />;
+          {filteredUsers.length ? (
+            <Users users={filteredUsers} />
+          ) : (
+            <p>No results for {input} </p>
+          )}
         </>
       );
     }
   }
+
   return (
     <div className="App">
       <h1>Our Users</h1>

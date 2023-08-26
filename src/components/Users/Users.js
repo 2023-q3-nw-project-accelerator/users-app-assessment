@@ -1,5 +1,5 @@
-import User from '../User/User';
-import './Users.css';
+import User from "../User/User";
+import "./Users.css";
 
 const Users = ({ users = [] }) => {
   return (
