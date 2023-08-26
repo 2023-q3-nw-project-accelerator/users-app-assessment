@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import SearchBar from "./components/SearchBar/SearchBar";
 import Users from "./components/Users/Users";
 import Loading from './components/Loading/Loading';
+import Error from './components/Error/Error'
 import "./App.css";
 
 const API_URL = "https://users-app-backend.onrender.com";
@@ -9,6 +10,8 @@ const API_URL = "https://users-app-backend.onrender.com";
 function App() {
   const [userData, setUserData] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+
   // TODO: Fetch data here
 
   useEffect(() => {
@@ -17,17 +20,18 @@ function App() {
         setLoading(true);
         const response = await fetch(`${API_URL}/users`);
         const json = await response.json();
-        // console.log(json.data);
         const { data, error } = json;
         if (response.ok) {
           setUserData(data);
           setLoading(false);
         } else {
           // error handling
+          setError(error)
           setLoading(false);
         }
       } catch (err) {
         //update error
+        setError(err.message)
         setLoading(false);
       }
     }
@@ -37,7 +41,9 @@ function App() {
 
   const renderContent = () => {
     if (loading) {
-      return <Loading/>;
+      return <Loading />;
+    } else if (error) {
+      return <Error error={error} />
     }
   }
 
