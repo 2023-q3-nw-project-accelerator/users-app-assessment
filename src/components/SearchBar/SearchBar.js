@@ -5,7 +5,7 @@ const SearchBar = ({searchInput, handleChange, handleExpandAll, handleCollapseAl
   
   
   return (
-    <div>
+    <div className='SearchBar'>
       <input 
     value={searchInput}
     type="text" 

@@ -1,0 +1,13 @@
+.Error{
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    width: 80vw;
+    height: 40vh;
+    border: 2px solid red;
+    margin: 3px 3px 3px 3px;
+    font-size: x-large;
+    font-weight: bold;
+    background-color: red;
+
+}

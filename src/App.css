@@ -4,3 +4,8 @@
     margin: 0 auto;
 }
 
+.App h1 {
+    display: grid;
+    justify-content: center;
+}
+

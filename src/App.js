@@ -92,7 +92,7 @@ function App() {
     if (loading) {
       return <Loading />;
     } else if (error) {
-      return <Error />;
+      return <Error error={error}/>;
     } else {
       return <Users 
       users={dataDisplay} 
