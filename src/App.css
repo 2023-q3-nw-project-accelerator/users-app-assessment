@@ -2,14 +2,6 @@
     width: 60vw;
     height: 100vh;
     margin: 0 auto;
+    display: flexbox;
 }
-@media (min-width: 400px) {
-    body {
-      font-size: 14px;
-    } 
-  
-    .container {
-      width:60vw;
-      margin: 0 auto;
-    } 
-   }
+

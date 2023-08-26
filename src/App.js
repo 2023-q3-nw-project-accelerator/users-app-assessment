@@ -40,9 +40,9 @@ function App() {
   if (input) {
     dataToDisplay = users.filter((user) => {
       const { name, company, country } = user;
-      const fullName = `${name} ${company} ${country}`.toLowerCase();
+      const userName = `${name} ${company} ${country}`.toLowerCase();
 
-      return fullName.includes(input.toLowerCase());
+      return userName.includes(input.toLowerCase());
     });
   }
 
@@ -63,7 +63,7 @@ function App() {
   const handleCollapseAll = () => {
     setExpanded([]);
   };
-  const handleChange = (e) => {
+  const handleInput = (e) => {
     setInput(e.target.value);
   };
 
@@ -81,27 +81,33 @@ function App() {
       return <div className="App__no-content">No items found!</div>;
     }
     return (
+      <div>
       <Users
         users={dataToDisplay}
         input={input}
         expanded={expanded}
         handleToggleExpanded={handleToggleExpanded}
       />
+      </div>
     );
   };
 
   return (
     <div className="App">
       <h1>Our Users</h1>
+      <div>
       <SearchBar
-        handleChange={handleChange}
+        handleInput={handleInput}
         input={input}
         handleExpandAll={handleExpandAll}
         handleCollapseAll={handleCollapseAll}
       />
+      </div>
+      <div>
       <Container center={Boolean(error || loading)} scroll={false}>
         {renderContent()}
       </Container>
+      </div>
     </div>
   );
 }

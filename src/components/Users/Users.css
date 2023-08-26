@@ -1,45 +1,5 @@
 .Users {
   height: inherit;
 }
-.Users__title {
-  font-weight: 700;
-  font-size: x-large;
-  margin: 0;
-  padding: 20px 0 20px;
-}
 
-.Users__controls {
-  display: grid;
-  grid-template-columns: 1fr 100px 100px;
-  align-items: baseline;
-  width: 50%;
-  border: none;
-}
-.Users__controls button {
-  border: 1px solid rgb(127, 167, 249);
-  cursor: pointer;
-}
 
-.Users__controls button:active {
-  border-color: #1804af;
-}
-
-.Users__controls input {
-  margin: 0;
-  border: 1px solid rgb(127, 167, 249);
-}
-
-.Users__controls input:focus {
-  border-color: #1804af;
-}
-
-.Users__content {
-  height: calc(100% - 41px);
-  overflow-y: scroll;
-}
-
-.Users__content--center {
-  display: grid;
-  justify-content: center;
-  align-items: center;
-}

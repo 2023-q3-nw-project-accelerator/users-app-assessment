@@ -3,6 +3,11 @@
 1. Fork and clone this repo
 2. run `npm install` to install, then `npm start` to start.
 
+loading state while the API call is in progress.
+error state if the API call returns an error response, or if any other error occurs while fetching data.
+Display the list of users.
+When the user types in the search bar, show only the users whose name, country, or company match the user input.
+No results for {input}` when there are no search results.
 
 ## Getting started and submitting
 1. Fork and clone this repo
