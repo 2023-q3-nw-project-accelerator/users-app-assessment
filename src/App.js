@@ -6,7 +6,6 @@ import Container from "./components/Container/Container";
 import SearchBar from "./components/SearchBar/SearchBar";
 import Users from "./components/Users/Users";
 
-
 const API_URL = "https://users-app-backend.onrender.com/users";
 
 function App() {
@@ -39,16 +38,11 @@ function App() {
     fetchData();
   }, []);
 
-  
-
   const handleToggleExpanded = (id) => {
-   
     if (!expanded.includes(id)) {
-     
       const newExpanded = [...expanded, id];
       setExpanded(newExpanded);
     } else {
-     
       const removed = expanded.filter((currId) => currId !== id);
       setExpanded(removed);
     }
@@ -71,20 +65,17 @@ function App() {
     setSearchInput(e.target.value);
   };
 
-  let dataDisplay = userData
-  
+  let dataDisplay = userData;
+
   if (searchInput) {
     dataDisplay = userData.filter((el) => {
-      
       const { name, country, company } = el;
 
-      const userInfo = `${name} ${company} ${country}`.toLowerCase()
+      const userInfo = `${name} ${company} ${country}`.toLowerCase();
 
       return userInfo.includes(searchInput.toLowerCase());
     });
   }
-
-  
 
   //Render
 
@@ -92,24 +83,27 @@ function App() {
     if (loading) {
       return <Loading />;
     } else if (error) {
-      return <Error error={error}/>;
+      return <Error error={error} />;
     } else {
-      return <Users 
-      users={dataDisplay} 
-      searchInput={searchInput}
-      expanded={expanded}
-      handleToggleExpanded={handleToggleExpanded}/>;
+      return (
+        <Users
+          users={dataDisplay}
+          searchInput={searchInput}
+          expanded={expanded}
+          handleToggleExpanded={handleToggleExpanded}
+        />
+      );
     }
   };
 
   return (
     <div className="App">
       <h1>Our Users</h1>
-      <SearchBar 
-      handleChange={handleChange} 
-      searchInput={searchInput}
-      handleCollapseAll={handleCollapseAll}
-      handleExpandAll={handleExpandAll}
+      <SearchBar
+        handleChange={handleChange}
+        searchInput={searchInput}
+        handleCollapseAll={handleCollapseAll}
+        handleExpandAll={handleExpandAll}
       />
       <Container center={Boolean(error || loading)}>
         {renderContent()}

@@ -15,15 +15,6 @@
 }
 
 @media screen and (max-width: 400px){
-     .Container {
-        /* width: 70vw; 
-        height: 80vh; */
-        border-radius: 5px;
-        /* background-color: #40d9a8;  */
-    
-     }
-    
-    
     .Container--center {
         display: grid;
         align-items: center;
