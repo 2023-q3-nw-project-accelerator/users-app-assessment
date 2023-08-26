@@ -1,13 +1,11 @@
 import User from "../User/User";
 import "./Users.css";
 
-const Users = ({ input, userData, expanded, handleToggleExpanded }) => {
-  console.log("expanded", expanded);
-
+const Users = ({ input, users = [], expanded, handleToggleExpanded }) => {
   return (
     <article className="Users">
-      {userData.length
-        ? userData.map((user) => {
+      {users.length
+        ? users.map((user) => {
             const { id } = user;
             return (
               <User

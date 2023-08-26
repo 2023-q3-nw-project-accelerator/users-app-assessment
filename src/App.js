@@ -9,18 +9,18 @@ import { useState, useEffect } from "react";
 const API_URL = process.env.REACT_APP_API_URL;
 
 function App() {
-  const [userData, setUserData] = useState([]);
-  const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
-  const [input, setInput] = useState("");
   const [expanded, setExpanded] = useState([]);
+  const [input, setInput] = useState("");
+  const [loading, setLoading] = useState(true);
+  const [userData, setUserData] = useState([]);
 
   useEffect(() => {
     async function fetchData() {
       try {
         setError("");
         setLoading(true);
-        const response = await fetch(`${API_URL}/users`);
+        const response = await fetch(`${API_URL}`);
         const json = await response.json();
         const { data, error } = json;
         if (response.ok) {
@@ -31,7 +31,6 @@ function App() {
           setLoading(false);
         }
       } catch (err) {
-        console.log(`<App/> useEffect error: ${err.message}`);
         setError(err.message);
         setLoading(false);
       }
@@ -80,28 +79,15 @@ function App() {
       return <Error error={error} />;
     } else {
       return (
-        <div>
-          <Users
-            input={input}
-            userData={dataToDisplay}
-            expanded={expanded}
-            handleToggleExpanded={handleToggleExpanded}
-          />
-        </div>
+        <Users
+          input={input}
+          users={dataToDisplay}
+          expanded={expanded}
+          handleToggleExpanded={handleToggleExpanded}
+        />
       );
     }
   };
-
-  console.log(
-    "data",
-    userData,
-    "loading",
-    loading,
-    "error",
-    error,
-    "input",
-    input
-  );
 
   return (
     <div className="App">
