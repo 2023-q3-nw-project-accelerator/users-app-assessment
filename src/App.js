@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Container from "./components/Container/Container";
 import Error from "./components/Error/Error";
+import NoResults from "./components/NoResults/NoResults";
 import Loading from "./components/Loading/Loading";
 import SearchBar from "./components/SearchBar/SearchBar";
 import Users from "./components/Users/Users";
@@ -47,7 +48,6 @@ function App() {
   }
 
   const handleToggleExpanded = (id) => {
-    console.log(expanded, "----");
     if (!expanded.includes(id)) {
       const newExpanded = [...expanded, id];
       setExpanded(newExpanded);
@@ -70,7 +70,7 @@ function App() {
   const renderContent = () => {
     if (loading) {
       return (
-        <div className="App--loading">
+        <div>
           <Loading />
         </div>
       );
@@ -78,7 +78,7 @@ function App() {
       return <Error error={error} />;
     }
     if (!dataToDisplay.length) {
-      return <div className="App__no-content">No items found!</div>;
+      return <NoResults input={input} />;
     }
     return (
       <div>
@@ -104,7 +104,7 @@ function App() {
       />
       </div>
       <div>
-      <Container center={Boolean(error || loading)} scroll={false}>
+      <Container center={Boolean(error || loading || input)} scroll={false}>
         {renderContent()}
       </Container>
       </div>

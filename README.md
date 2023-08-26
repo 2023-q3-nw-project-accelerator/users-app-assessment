@@ -8,7 +8,10 @@ error state if the API call returns an error response, or if any other error occ
 Display the list of users.
 When the user types in the search bar, show only the users whose name, country, or company match the user input.
 No results for {input}` when there are no search results.
-
+button that shows / hides the `about` paragraph for a user.
+`Expand All` button that, when clicked, expands all the cards regardless of their current state.
+Implement a `Collapse All` button that, when clicked, collapses all the cards regardless of their current state.
+create new components for loading, error, no results
 ## Getting started and submitting
 1. Fork and clone this repo
 1. run `npm install` to install, then `npm start` to start.
