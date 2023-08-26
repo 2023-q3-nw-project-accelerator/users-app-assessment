@@ -12,6 +12,7 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [searchInput, setSearchInput] = useState("");
+  const [expanded, setExpanded] = useState([]);
 
   // TODO: Fetch data here
 
@@ -43,6 +44,15 @@ function App() {
     setSearchInput(e.target.value);
   };
 
+  const handleExpandAll = () => {
+    const allIds = userData.map((user) => user.id);
+    setExpanded(allIds);
+  };
+
+  const handleCollapseAll = () => {
+    setExpanded([]);
+  };
+
   let dataToDisplay = userData;
   if (searchInput) {
     dataToDisplay = userData.filter((user) => {
@@ -63,7 +73,7 @@ function App() {
     } else if (error) {
       return <Error error={error} />;
     } else {
-      return <Users users={dataToDisplay} searchInput={searchInput} />;
+      return <Users users={dataToDisplay} searchInput={searchInput} expanded={expanded} setExpanded={setExpanded} />;
     }
   };
 
@@ -71,6 +81,8 @@ function App() {
     <div className="App">
       <h1>Our Users</h1>
       <SearchBar searchInput={searchInput} handleChange={handleChange} />
+      <button onClick={handleExpandAll}>Expand All</button>
+      <button onClick={handleCollapseAll}>Collapse All</button>
       {renderContent()}
     </div>
   );

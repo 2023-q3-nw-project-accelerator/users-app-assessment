@@ -1,10 +1,7 @@
 import User from "../User/User";
-import { useState } from "react";
 import "./Users.css";
 
-const Users = ({ users = [], searchInput }) => {
-  const [expanded, setExpanded] = useState([]);
-
+const Users = ({ users = [], searchInput, expanded, setExpanded }) => {
   const handleToggleExpanded = (id) => {
     if (!expanded.includes(id)) {
       const newExpanded = [...expanded, id];
