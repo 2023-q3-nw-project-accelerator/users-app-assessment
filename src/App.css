@@ -3,4 +3,13 @@
     height: 100vh;
     margin: 0 auto;
 }
-
+@media (min-width: 400px) {
+    body {
+      font-size: 14px;
+    } 
+  
+    .container {
+      width:60vw;
+      margin: 0 auto;
+    } 
+   }

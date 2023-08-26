@@ -1,4 +1,8 @@
 # Users app practice assessment
+## Running the app
+1. Fork and clone this repo
+2. run `npm install` to install, then `npm start` to start.
+
 
 ## Getting started and submitting
 1. Fork and clone this repo

@@ -1,0 +1,21 @@
+.Container {
+    width: 60vw;
+    height: 80vh;
+    border-radius: 5px;
+    background-color: aliceblue;
+
+}
+.Container--scroll {
+    overflow-y: scroll;
+}
+
+.Container--center {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+}
+/* @media (min-width: 600px) {
+    body {
+      font-size: 14px;
+    }
+}; */
