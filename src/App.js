@@ -1,40 +1,52 @@
 import { useState, useEffect } from "react";
 import SearchBar from "./components/SearchBar/SearchBar";
 import Users from "./components/Users/Users";
+import Loading from './components/Loading/Loading';
 import "./App.css";
 
 const API_URL = "https://users-app-backend.onrender.com";
 
 function App() {
   const [userData, setUserData] = useState([]);
+  const [loading, setLoading] = useState(true);
   // TODO: Fetch data here
 
   useEffect(() => {
     async function fetchData() {
       try {
+        setLoading(true);
         const response = await fetch(`${API_URL}/users`);
         const json = await response.json();
         // console.log(json.data);
         const { data, error } = json;
         if (response.ok) {
-        setUserData(data);
+          setUserData(data);
+          setLoading(false);
         } else {
           // error handling
+          setLoading(false);
         }
-
-
       } catch (err) {
-        //update error 
+        //update error
+        setLoading(false);
       }
     }
     fetchData();
   }, []);
+
+
+  const renderContent = () => {
+    if (loading) {
+      return <Loading/>;
+    }
+  }
 
   return (
     <div className="App">
       <h1>Our Users</h1>
       <SearchBar />
       <Users />
+      {renderContent()}
     </div>
   );
 }
