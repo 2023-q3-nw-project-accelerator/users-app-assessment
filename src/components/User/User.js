@@ -1,8 +1,7 @@
 import { useState } from "react";
 import "./User.css";
 
-const User = ({ user }) => {
-  const [showAbout, setShowAbout] = useState(false);
+const User = ({ user, expanded, handleToggleExpanded }) => {
   const { about, age, company, country, name, photo } = user;
 
   return (
@@ -17,7 +16,7 @@ const User = ({ user }) => {
           <li>Country: {country}</li>
           <li>Company: {company}</li>
         </ul>
-        {showAbout && (
+        {expanded && (
           <div className="User__about">
             <h3>About {name.split(" ")[0]}:</h3>
             <p>{about}</p>
@@ -25,7 +24,7 @@ const User = ({ user }) => {
         )}
       </div>
       <div className="User__controls">
-        <button onClick={() => setShowAbout(!showAbout)}>click me</button>
+        <button onClick={() => handleToggleExpanded(user.id)}>click me</button>
       </div>
     </section>
   );
