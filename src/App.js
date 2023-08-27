@@ -4,7 +4,7 @@ import Users from "./components/Users/Users";
 import "./App.css";
 import useAxios from "./hooks/useAxios";
 function App() {
-  const API_URL = "https://users-app-backend.onrender.com/userss";
+  const API_URL = "https://users-app-backend.onrender.com/users";
   const { data, loading, error } = useAxios(API_URL);
   const [input, setInput] = useState("");
   const [expanded, setExpanded] = useState([]);
