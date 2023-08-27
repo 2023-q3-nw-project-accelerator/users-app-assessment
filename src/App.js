@@ -14,8 +14,6 @@ function App() {
   const [searchInput, setSearchInput] = useState("");
   const [expanded, setExpanded] = useState([]);
 
-  // TODO: Fetch data here
-
   useEffect(() => {
     async function fetchData() {
       try {
@@ -27,12 +25,10 @@ function App() {
           setUserData(data);
           setLoading(false);
         } else {
-          // error handling
           setError(error);
           setLoading(false);
         }
       } catch (err) {
-        //update error
         setError(err.message);
         setLoading(false);
       }
@@ -73,19 +69,25 @@ function App() {
     } else if (error) {
       return <Error error={error} />;
     } else {
-      return <Users users={dataToDisplay} searchInput={searchInput} expanded={expanded} setExpanded={setExpanded} />;
+      return (
+        <Users
+          users={dataToDisplay}
+          searchInput={searchInput}
+          expanded={expanded}
+          setExpanded={setExpanded}
+        />
+      );
     }
   };
 
   return (
     <div className="App">
       <h1>Our Users</h1>
-      <div className="App__control"> 
-      <SearchBar searchInput={searchInput} handleChange={handleChange} />
-      <button onClick={handleExpandAll}>Expand All</button>
-      <button onClick={handleCollapseAll}>Collapse All</button>
+      <div className="App__control">
+        <SearchBar searchInput={searchInput} handleChange={handleChange} />
+        <button onClick={handleExpandAll}>Expand All</button>
+        <button onClick={handleCollapseAll}>Collapse All</button>
       </div>
-    
 
       {renderContent()}
     </div>

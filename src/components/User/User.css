@@ -24,7 +24,6 @@
   font-size: 1.5rem;
 }
 
-/* phone less than or equal to 600 */
 @media screen and (max-width: 600px) {
   .User {
     display: block;
