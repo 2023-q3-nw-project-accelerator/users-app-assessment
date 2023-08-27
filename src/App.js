@@ -80,9 +80,13 @@ function App() {
   return (
     <div className="App">
       <h1>Our Users</h1>
+      <div className="App__control"> 
       <SearchBar searchInput={searchInput} handleChange={handleChange} />
       <button onClick={handleExpandAll}>Expand All</button>
       <button onClick={handleCollapseAll}>Collapse All</button>
+      </div>
+    
+
       {renderContent()}
     </div>
   );

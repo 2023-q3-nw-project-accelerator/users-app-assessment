@@ -13,7 +13,7 @@ const Users = ({ users = [], searchInput, expanded, setExpanded }) => {
   };
 
   if (users.length === 0) {
-    return <div>No results for {searchInput}</div>;
+    return <div className="Users__noResult">No results for {searchInput}</div>;
   } else {
     return (
       <article className="Users">
