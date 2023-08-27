@@ -14,7 +14,11 @@ export default function useAxios(url) {
         const response = await axios.get(url);
         setData(response.data.data);
       } catch (error) {
-        setError(error.message);
+        if (error.response) {
+          setError(error.response.data.error);
+        } else {
+          setError(error.message);
+        }
       } finally {
         setLoading(false);
       }
