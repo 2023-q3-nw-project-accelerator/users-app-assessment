@@ -1,8 +1,23 @@
-import './SearchBar.css';
+import "./SearchBar.css";
 
-const SearchBar = () => {
+const SearchBar = ({
+  input,
+  handleInput,
+  handleExpandAll,
+  handleCollapseAll,
+}) => {
   return (
-    <input type="text" placeholder="Search by name, country, or company" />
+    <div className="SearchBar">
+      <input
+        type="text"
+        id="id" 
+        value={ input }
+        onChange={ handleInput }
+        placeholder="Search by name, country, or company"
+      />
+      <button onClick={ handleExpandAll }>Expand All</button>
+      <button onClick={ handleCollapseAll }>Collapse All</button>
+    </div>
   );
 };
 
