@@ -2,7 +2,7 @@
   display: grid;
   grid-template-columns: 100px 5fr 1fr;
   gap: 1.5rem;
-  border: 1px dashed #0000FF;
+  border: 1px dashed #0000ff;
   border-radius: 10px;
   margin: 1rem 0;
   padding: 1rem;
@@ -40,7 +40,7 @@
 @media (max-width: 570px) {
   .User {
     display: grid;
-    grid-template-columns: auto;
-    gap: auto;
+    grid-template-columns: auto 3fr 1fr;
+    gap: 1.5rem;
   }
 }

@@ -1,24 +1,24 @@
 .SearchBar {
-    /* padding: 16px 0; */
+  margin: 0;
+}
+.SearchBar input:active {
+  border-color: 1px solid #1804af;
+}
+.SearchBar input[type="text"]:focus {
+  border-color: #156cbd;
+}
+.SearchBar input[type="text"] {
+  border: 2px solid #1804af;
+  outline: none;
+}
+.SearchBar button {
+  margin: 0;
+  border: 1px solid rgb(127, 167, 249);
+}
+@media (max-width: 570px) {
+  .SearchBar {
+    display: grid;
+    grid-template-columns: auto;
+    gap: auto;
   }
-  .SearchBar input:active {
-    border-color: 1px solid #1804af;
-  }
-  .SearchBar input[type=text]:focus {
-    border-color: #156cbd;
-  }
-  .SearchBar input[type=text] {
-    border: 2px solid #1804af;
-    outline: none;
-  }
-  .SearchBar button {
-    margin: 0;
-    border: 1px solid rgb(127, 167, 249);
-  }
-  @media (max-width: 570px) {
-    .SearchBar {
-      display: grid;
-      grid-template-columns: auto;
-      gap: auto;
-    }
-  }
+}

@@ -17,7 +17,8 @@ This users-app displays a list of ten users:
 button that shows / hides the `about` paragraph for a user.
 - The `Expand All` button when clicked, expands all the cards regardless of their current state.
 - The `Collapse All` button, when clicked, collapses all the cards regardless of their current state.
-- I used a Media query with a max width of 570, below which the app has a breakpoint that will stack the elements of the card in one column with the toggle button at the bottom.
+- I used a Media query with a max width of 570, below which the app has a breakpoint that will stack the elements of the search input andthe expand all and collapse all buttons in one column.
+ - at this breakpoint the grid columns will shrink the 2nd column to take up fewer fractions, i.e  3 instead of 5 and the imag will be automatically adjusted to size in the first column.
 
 ## other notes
 - There could be other ways to do the queries, that will require more research on my part.

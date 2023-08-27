@@ -70,18 +70,16 @@ function App() {
 
   const renderContent = () => {
     if (loading) {
-      return (
-          <Loading />
-      );
+      return < Loading />;
     } else if (error) {
-      return <Error error={error} />;
+      return < Error error={error} />;
     }
     if (!dataToDisplay.length) {
-      return <NoResults input={input} />;
+      return < NoResults input={input} />;
     }
     return (
       <div className="App__users">
-        <Users
+        < Users
           users={dataToDisplay}
           input={input}
           expanded={expanded}
@@ -95,7 +93,7 @@ function App() {
     <div className="App">
       <h1>Our Users</h1>
       <div>
-        <SearchBar
+        < SearchBar
           handleInput={handleInput}
           input={input}
           handleExpandAll={handleExpandAll}
@@ -103,8 +101,8 @@ function App() {
         />
       </div>
       <div>
-        <Container center={Boolean(error || loading || input)} scroll={false}>
-        {renderContent()}
+        < Container center={Boolean(error || loading || input)} scroll={false}>
+          {renderContent()}
         </Container>
       </div>
     </div>

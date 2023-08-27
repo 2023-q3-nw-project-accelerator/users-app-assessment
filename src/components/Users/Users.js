@@ -7,7 +7,7 @@ const Users = ({ users, input, expanded, handleToggleExpanded }) => {
       {users.map((user) => {
         const { id } = user;
         return (
-          <User
+          < User
             key={id}
             user={user}
             input={input}

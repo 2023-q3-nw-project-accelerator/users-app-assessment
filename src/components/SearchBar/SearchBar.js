@@ -11,12 +11,12 @@ const SearchBar = ({
       <input
         type="text"
         id="id" 
-        value={input}
-        onChange={handleInput}
+        value={ input }
+        onChange={ handleInput }
         placeholder="Search by name, country, or company"
       />
-      <button onClick={handleExpandAll}>Expand All</button>
-      <button onClick={handleCollapseAll}>Collapse All</button>
+      <button onClick={ handleExpandAll }>Expand All</button>
+      <button onClick={ handleCollapseAll }>Collapse All</button>
     </div>
   );
 };
