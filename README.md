@@ -3,9 +3,13 @@
 1. Fork and clone this repo
 2. run `npm install` to install, then `npm start` to start.
 
-loading state while the API call is in progress.
-error state if the API call returns an error response, or if any other error occurs while fetching data.
-Display the list of users.
+This users-app displays a list of ten users: 
+- the full name, age, company, country, an image and a short about them.
+- the user can search through the list of users by name, coountry or company.
+- the user can toggle to display the about section on each user one at a time - by clicking on the show more/less button; or expand or collapse all at the same time by using the expandall /collapse buttons next to the input text box.
+- the loading state displays while the API call is in progress by showing the loading component.
+- an error state is displayed if the API call returns an error response, or if any other error occurs while fetching data - 
+- on loading the app displays the list of all ten users as cards stacked in rows. Each row displays the users image to the left; next to the image with a gap of 20px using an unordered list  - the full name of the user with ca
 When the user types in the search bar, show only the users whose name, country, or company match the user input.
 No results for {input}` when there are no search results.
 button that shows / hides the `about` paragraph for a user.

@@ -8,6 +8,7 @@ import Users from "./components/Users/Users";
 import "./App.css";
 
 const API_URL = "https://users-app-backend.onrender.com/users";
+
 function App() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -37,12 +38,12 @@ function App() {
     }
     fetchData();
   }, []);
+
   let dataToDisplay = users;
   if (input) {
     dataToDisplay = users.filter((user) => {
       const { name, company, country } = user;
       const userName = `${name} ${company} ${country}`.toLowerCase();
-
       return userName.includes(input.toLowerCase());
     });
   }
@@ -81,13 +82,13 @@ function App() {
       return <NoResults input={input} />;
     }
     return (
-      <div>
-      <Users
-        users={dataToDisplay}
-        input={input}
-        expanded={expanded}
-        handleToggleExpanded={handleToggleExpanded}
-      />
+      <div className="App__users">
+        <Users
+          users={dataToDisplay}
+          input={input}
+          expanded={expanded}
+          handleToggleExpanded={handleToggleExpanded}
+        />
       </div>
     );
   };
@@ -96,17 +97,17 @@ function App() {
     <div className="App">
       <h1>Our Users</h1>
       <div>
-      <SearchBar
-        handleInput={handleInput}
-        input={input}
-        handleExpandAll={handleExpandAll}
-        handleCollapseAll={handleCollapseAll}
-      />
+        <SearchBar
+          handleInput={handleInput}
+          input={input}
+          handleExpandAll={handleExpandAll}
+          handleCollapseAll={handleCollapseAll}
+        />
       </div>
       <div>
-      <Container center={Boolean(error || loading || input)} scroll={false}>
+        <Container center={Boolean(error || loading || input)} scroll={false}>
         {renderContent()}
-      </Container>
+        </Container>
       </div>
     </div>
   );

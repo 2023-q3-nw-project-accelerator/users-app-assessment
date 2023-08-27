@@ -1,6 +1,6 @@
 .User {
   display: grid;
-  grid-template-columns: 100px 3fr 1fr;
+  grid-template-columns: 100px 5fr 1fr;
   gap: 1.5rem;
   border: 1px dashed #0000FF;
   border-radius: 10px;

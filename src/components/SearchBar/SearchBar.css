@@ -1,15 +1,15 @@
 .SearchBar {
-    height: calc(100% - 41px);
-    padding: 16px 0;
+    /* padding: 16px 0; */
   }
   .SearchBar input:active {
-    border-color: #1804af;
+    border-color: 1px solid #1804af;
   }
-  .SearchBar input:focus {
+  .SearchBar input[type=text]:focus {
     border-color: #156cbd;
   }
-  .SearchBar input {
-    border: 1px solid rgb(127, 167, 249);
+  .SearchBar input[type=text] {
+    border: 2px solid #1804af;
+    outline: none;
   }
   .SearchBar button {
     margin: 0;
