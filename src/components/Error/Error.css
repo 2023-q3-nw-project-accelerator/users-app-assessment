@@ -1,0 +1,5 @@
+.Error {
+  display: grid;
+  align-items: center;
+  color: red;
+}

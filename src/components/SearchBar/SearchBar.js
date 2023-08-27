@@ -1,8 +1,13 @@
-import './SearchBar.css';
+import { useState } from "react";
+import "./SearchBar.css";
 
-const SearchBar = () => {
+const SearchBar = ({ value, onChange, handleExpandALL, handleCollapseALL }) => {
   return (
-    <input type="text" placeholder="Search by name, country, or company" />
+    <div className="searchBar">
+      <input type="text" placeholder="Search by name, country, or company" onChange={onChange} value={value} />
+      <button onClick={handleExpandALL}>Expand ALL</button>
+      <button onClick={handleCollapseALL}>Collapse ALL</button>
+    </div>
   );
 };
 

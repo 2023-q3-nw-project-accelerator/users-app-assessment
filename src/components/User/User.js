@@ -1,7 +1,7 @@
-import './User.css';
+import "./User.css";
 
-const User = ({ user }) => {
-  const { about, age, company, country, name, photo } = user;
+const User = ({ user, expand, handleSingleExpand, handleSingleCollapse }) => {
+  const { about, age, company, country, name, photo, id } = user;
 
   return (
     <section className="User">
@@ -15,13 +15,23 @@ const User = ({ user }) => {
           <li>Country: {country}</li>
           <li>Company: {company}</li>
         </ul>
-        <div className="User__about">
-          <h3>About {name.split(' ')[0]}:</h3>
-          <p>{about}</p>
-        </div>
+        {expand && (
+          <div className="User__about">
+            <h3>About {name.split(" ")[0]}:</h3>
+            <p>{about}</p>
+          </div>
+        )}
       </div>
       <div className="User__controls">
-        <button>click me</button>
+        {expand ? (
+          <button value={id} onClick={handleSingleCollapse}>
+            Show Less
+          </button>
+        ) : (
+          <button value={id} onClick={handleSingleExpand}>
+            Show More
+          </button>
+        )}
       </div>
     </section>
   );
