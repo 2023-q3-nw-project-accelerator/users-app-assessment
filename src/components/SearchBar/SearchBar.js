@@ -10,6 +10,7 @@ const SearchBar = ({
     <div className="SearchBar">
       <input
         type="text"
+        id="id" 
         value={input}
         onChange={handleInput}
         placeholder="Search by name, country, or company"

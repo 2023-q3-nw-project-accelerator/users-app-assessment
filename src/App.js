@@ -71,9 +71,7 @@ function App() {
   const renderContent = () => {
     if (loading) {
       return (
-        <div>
           <Loading />
-        </div>
       );
     } else if (error) {
       return <Error error={error} />;
