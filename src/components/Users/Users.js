@@ -4,18 +4,13 @@ import SearchBar from "../SearchBar/SearchBar";
 import { useState } from "react";
 
 const Users = ({ users = [] }) => {
+
   console.log(`Users Rendered!`);
   
-  const [expanded, setExpanded] = useState(false)
 
   return (
     <div className="Users__controls">
-    <span>
-    <SearchBar />
-    <button onClick={(expanded)}>Expand All</button>
-    <button onClick={(!expanded)}>Collapse All</button>
-    </span>
-      
+    <SearchBar users={users}/>
       <article className="Users">
         {users.map((user) => {
           const { id } = user;
