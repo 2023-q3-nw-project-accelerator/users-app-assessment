@@ -1,0 +1,12 @@
+.SearchBar--controls input {
+    margin: 0 8px;
+    padding: 16px 0 8px;
+    outline-color: blue;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    
+}
+
+.SearchBar--controls input:focus {
+    border: blue;
+}
