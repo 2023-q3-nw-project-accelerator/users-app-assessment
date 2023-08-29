@@ -1,13 +1,14 @@
-import React from 'react'
-import './Error.css'
+import React from "react";
+import "./Error.css";
 
-function Error({error}) {
-    console.log(`<Error/> Rendered!`)
+function Error({ error }) {
   return (
-    <div className='Error'>
-    There was an error: {error}
+    <div className="Error">
+      There was an error: {error}
+      <br />
+      Contact Support Admin
     </div>
-  )
+  );
 }
 
-export default Error
+export default Error;

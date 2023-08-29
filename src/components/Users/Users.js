@@ -1,24 +1,24 @@
+import React from "react";
 import User from "../User/User";
 import "./Users.css";
-import SearchBar from "../SearchBar/SearchBar";
-import { useState } from "react";
 
-const Users = ({ users = [] }) => {
-
-  console.log(`Users Rendered!`);
-  
-
+function Users({ users, input, expanded, handleToggleExpanded }) {
   return (
-    <div className="Users__controls">
-    <SearchBar users={users}/>
-      <article className="Users">
-        {users.map((user) => {
-          const { id } = user;
-          return <User key={id} user={user} />;
-        })}
-      </article>
-    </div>
+    <article className="Users">
+      {users.map((user) => {
+        const { id } = user;
+        return (
+          <User
+            key={id}
+            user={user}
+            input={input}
+            expanded={expanded.includes(user.id)}
+            onClick={() => handleToggleExpanded(user.id)}
+          />
+        );
+      })}
+    </article>
   );
-};
+}
 
 export default Users;

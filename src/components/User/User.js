@@ -1,12 +1,9 @@
 import './User.css';
-import { useState } from 'react';
 
-const User = ({ user }) => {
-  const [show, setShow] = useState(false)
+const User = ({ user, onClick, expanded }) => {
 
   const { about, age, company, country, name, photo } = user;
 
-  console.log(`User Rendered! Show=${show}`)
 
   return (
     <section className="User">
@@ -21,13 +18,17 @@ const User = ({ user }) => {
           <li>Company: {company}</li>
         </ul>
        
-        {show && <div className='User__about'>
+        {expanded && (
+          <div className='User__about'>
         <h3>About {name.split(' ')[0]}:</h3>
         <p>{about}</p>
-        </div>}
+        </div>
+        )}
       </div>
       <div className="User__controls">
-        <button onClick={() => {setShow(!show)}}>{show ? 'Show Less' : 'Show More'}</button>
+        <button onClick={onClick}>
+          {expanded ? 'Show Less' : 'Show More'}
+        </button>
       </div>
     </section>
   );

@@ -3,11 +3,14 @@
     height: 80vh;
     border-radius: 5px;
     background-color: aliceblue;
-    overflow-y: scroll;
 }
 
 .Container--center {
     display: grid;
     align-items: center;
     justify-content: center;
+}
+
+.Container--scroll {
+    overflow-y: scroll;
 }
