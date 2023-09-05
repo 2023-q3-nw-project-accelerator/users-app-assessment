@@ -1,0 +1,19 @@
+.Grid {
+  width: 60vw;
+  height: 100vh;
+  margin: 0 auto;
+}
+
+.Grid--center {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+}
+
+@media only screen and (max-width: 600px) {
+  .Grid {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+  }
+}
