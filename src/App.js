@@ -50,7 +50,7 @@ function App() {
     }
   }
 
-  const handleExpandAll = (id) => {
+  const handleExpandAll = () => {
     const userId = users.map((user) => user.id)
     setExpanded(userId)
   }
