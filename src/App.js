@@ -68,11 +68,12 @@ function App() {
       return <Loading />;
     } else if (error) {
       return <Error error={error} />;
+    } else if (dataToDisplay.length === 0) {
+      return <div className="App__noResult">No results for {searchInput}</div>;
     } else {
       return (
         <Users
           users={dataToDisplay}
-          searchInput={searchInput}
           expanded={expanded}
           setExpanded={setExpanded}
         />
