@@ -1,8 +1,13 @@
-import './SearchBar.css';
+import "./SearchBar.css";
 
-const SearchBar = () => {
+const SearchBar = ({ value, onChange }) => {
   return (
-    <input type="text" placeholder="Search by name, country, or company" />
+    <input
+      type="text"
+      value={value}
+      onChange={(e) => onChange(e.target.value)}
+      placeholder="Search by name, country, or company"
+    />
   );
 };
 
