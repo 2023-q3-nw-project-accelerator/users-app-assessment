@@ -46,11 +46,16 @@ function App() {
   let dataToDisplay = userData;
 
   if (input) {
+    const userInputToLowerCase = input.toLowerCase();
+
     dataToDisplay = userData.filter((user) => {
       const { name, country, company } = user;
-      const userDetails = `${name} ${country} ${company}`.toLowerCase();
 
-      return userDetails.includes(input.toLowerCase());
+      return (
+        name.toLowerCase().includes(userInputToLowerCase) ||
+        country.toLowerCase().includes(userInputToLowerCase) ||
+        company.toLowerCase().includes(userInputToLowerCase)
+      );
     });
   }
 
@@ -78,7 +83,7 @@ function App() {
       return <Loading />;
     } else if (error) {
       return <Error error={error} />;
-    } else if (!dataToDisplay) {
+    } else if (!dataToDisplay.length) {
       return <NoContent input={input} />;
     } else {
       return (
