@@ -5,6 +5,7 @@ import { useEffect, useState } from "react"
 import Loading from "./components/Loading/Loading"
 import Error from "./components/Error/Error"
 import Grid from "./components/Grid/Grid"
+import NoContent from "./components/NoContent/NoContent"
 
 function App() {
   const [loading, setLoading] = useState(true)
@@ -88,6 +89,8 @@ function App() {
       return <Loading />
     } else if (error) {
       return <Error error={error} />
+    } else if (dataToDisplay.length === 0) {
+      return <NoContent input={input} />
     } else {
       return (
         <Users
