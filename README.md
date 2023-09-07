@@ -1,13 +1,13 @@
-# Users App Practice Assessment
+# Users App Assessment
 
 ## Introduction
 
-This project is part of a practice assessment to build a Users app. The app interacts with an external API to fetch user data and display it to users.
+This project is part of a assessment to build a Users app. The app interacts with an external API to fetch user data and display it to users.
 
 ## Getting Started
 
 1. Fork and clone this repository.
-2. Navigate to the project directory: `cd users-app-practice`.
+2. Navigate to the project directory: `cd users-app-Assessment`.
 3. Install project dependencies: `npm install`.
 4. Start the app: `npm start`.
 

@@ -21,7 +21,7 @@ function App() {
       setLoading(true)
       const response = await fetch(`${API_URL}`)
       const json = await response.json()
-      const { data } = json
+      const { data, error } = json
 
       if (response.ok) {
         setUsers(data)
