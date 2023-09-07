@@ -6,7 +6,7 @@ import Users from "./components/Users/Users";
 import "./App.css";
 import { useState, useEffect } from "react";
 
-const API_URL = process.env.REACT_APP_API_URL;
+const API_URL = "https://users-app-backend.onrender.com";
 
 function App() {
   const [error, setError] = useState("");
@@ -20,7 +20,7 @@ function App() {
       try {
         setError("");
         setLoading(true);
-        const response = await fetch(`${API_URL}`);
+        const response = await fetch(`${API_URL}/users`);
         const json = await response.json();
         const { data, error } = json;
         if (response.ok) {
