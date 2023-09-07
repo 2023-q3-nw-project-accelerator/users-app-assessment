@@ -23,7 +23,9 @@ const User = ({ user, expanded, handleToggleExpanded }) => {
         )}
       </div>
       <div className="User__controls">
-        <button onClick={() => handleToggleExpanded(user.id)}>click me</button>
+        <button onClick={() => handleToggleExpanded(user.id)}>
+          {expanded ? "Hide" : "Show"}
+        </button>
       </div>
     </section>
   );
