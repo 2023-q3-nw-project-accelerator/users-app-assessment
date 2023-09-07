@@ -1,4 +1,3 @@
-import { useState } from "react";
 import "./User.css";
 
 const User = ({ user, expanded, handleToggleExpanded }) => {

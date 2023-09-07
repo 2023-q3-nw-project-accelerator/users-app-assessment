@@ -6,8 +6,8 @@ import Loading from "./components/Loading/Loading";
 import Error from "./components/Error/Error";
 import "./App.css";
 function App() {
-  const API_URL = "https://users-app-backend.onrender.com/users";
-  const { data, loading, error } = useAxios(API_URL);
+  const API_URL = "https://users-app-backend.onrender.com";
+  const { data, loading, error } = useAxios(`${API_URL}/users`);
   const [input, setInput] = useState("");
   const [expanded, setExpanded] = useState([]);
 
