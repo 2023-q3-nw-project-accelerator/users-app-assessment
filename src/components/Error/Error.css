@@ -1,16 +1,5 @@
-.App {
-  width: 60vw;
-  height: 100vh;
-  margin: 0 auto;
-}
-
-.App__control {
-  display: grid;
-  gap: 8px;
-  grid-template-columns: 3fr 1fr 1fr;
-}
-
-.App__noResult {
+.Error {
+  color: red;
   width: 60vw;
   height: 80vh;
   display: grid;
