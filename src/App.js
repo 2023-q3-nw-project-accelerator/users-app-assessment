@@ -66,10 +66,20 @@ function App() {
   let dataToDisplay = users
 
   if (input) {
+    const searchLowerCase = input.toLowerCase()
+
     dataToDisplay = users.filter((user) => {
       const { name, country, company } = user
-      const userDetails = `${name} ${country} ${company}`.toLowerCase()
-      return userDetails.includes(input.toLowerCase())
+
+      const nameLowerCase = name.toLowerCase()
+      const countryLowerCase = country.toLowerCase()
+      const companyLowerCase = company.toLowerCase()
+
+      return (
+        nameLowerCase.includes(searchLowerCase) ||
+        countryLowerCase.includes(searchLowerCase) ||
+        companyLowerCase.includes(searchLowerCase)
+      )
     })
   }
 
