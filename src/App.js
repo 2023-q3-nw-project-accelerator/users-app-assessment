@@ -1,6 +1,7 @@
 import Container from "./components/Container/Container";
 import Error from "./components/Error/Error";
 import Loading from "./components/Loading/Loading";
+import NoContent from "./components/NoContent/NoContent";
 import SearchBar from "./components/SearchBar/SearchBar";
 import Users from "./components/Users/Users";
 import "./App.css";
@@ -77,6 +78,8 @@ function App() {
       return <Loading />;
     } else if (error) {
       return <Error error={error} />;
+    } else if (!dataToDisplay) {
+      return <NoContent input={input} />;
     } else {
       return (
         <Users
