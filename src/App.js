@@ -7,7 +7,7 @@ import Error from "./components/Error/Error";
 import "./App.css";
 function App() {
   const API_URL = "https://users-app-backend.onrender.com";
-  const { data, loading, error } = useAxios(`${API_URL}/users`);
+  const { data: users, loading, error } = useAxios(`${API_URL}/users`);
   const [input, setInput] = useState("");
   const [expanded, setExpanded] = useState([]);
 
@@ -22,12 +22,20 @@ function App() {
   }
 
   function handleExpandAll() {
-    setExpanded(data.map((user) => user.id));
+    setExpanded(users.map((user) => user.id));
   }
 
   function handleCollapseAll() {
     setExpanded([]);
   }
+
+  const filteredUsers = users.filter((user) => {
+    return (
+      user.name.toLowerCase().includes(input.toLowerCase()) ||
+      user.country.toLowerCase().includes(input.toLowerCase()) ||
+      user.company.toLowerCase().includes(input.toLowerCase())
+    );
+  });
 
   function renderContent() {
     if (loading) {
@@ -36,19 +44,22 @@ function App() {
     if (error) {
       return <Error error={error} />;
     }
-    if (data) {
+    if (users) {
       return (
         <>
           <SearchBar value={input} onChange={setInput} />
           <button onClick={handleExpandAll}>Expand all</button>
           <button onClick={handleCollapseAll}>Collapse All</button>
 
-          <Users
-            users={data}
-            input={input}
-            expanded={expanded}
-            handleToggleExpanded={handleToggleExpanded}
-          />
+          {filteredUsers.length ? (
+            <Users
+              users={filteredUsers}
+              expanded={expanded}
+              handleToggleExpanded={handleToggleExpanded}
+            />
+          ) : (
+            <p>No results for {input} </p>
+          )}
         </>
       );
     }

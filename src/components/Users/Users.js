@@ -1,22 +1,10 @@
 import User from "../User/User";
 import "./Users.css";
 
-const Users = ({ users = [], input, expanded, handleToggleExpanded }) => {
-  const filteredUsers = users.filter((user) => {
-    return (
-      user.name.toLowerCase().includes(input.toLowerCase()) ||
-      user.country.toLowerCase().includes(input.toLowerCase()) ||
-      user.company.toLowerCase().includes(input.toLowerCase())
-    );
-  });
-
-  if (filteredUsers.length === 0) {
-    return <p>No results for {input} </p>;
-  }
-
+const Users = ({ users = [], expanded, handleToggleExpanded }) => {
   return (
     <article className="Users">
-      {filteredUsers.map((user) => {
+      {users.map((user) => {
         const { id } = user;
         return (
           <User
