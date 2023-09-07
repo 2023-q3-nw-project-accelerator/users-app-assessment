@@ -2,7 +2,6 @@
     width: 60vw;
     height: 80vh;
     border-radius: 5px;
-    /* background-color: #fff; */
 }
 
 
@@ -14,8 +13,8 @@
 
 }
 
-@media screen and (max-width: 400px){
-    .Container--center {
+@media screen and (max-width: 580px){
+    .Container{
         display: grid;
         align-items: center;
         justify-content: center;

@@ -31,13 +31,14 @@
         grid-template-columns: 1fr;
         justify-content: center;
         align-items: center;
+        text-align: center;
         border: 1px dashed blue;
         border-radius: 5px;
         width: 50%;
-        margin: 1rem0;
+        margin: 1rem;
         padding: 3rem ;
     }
-    .User__avatar > img {
+    .User__avatar  img {
         width: 50%; 
     }
 
@@ -57,6 +58,4 @@
         margin: auto;
     }
 
-    
-    
 }

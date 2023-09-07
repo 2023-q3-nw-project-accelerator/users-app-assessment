@@ -5,21 +5,23 @@ import Error from "./components/Error/Error";
 import Container from "./components/Container/Container";
 import SearchBar from "./components/SearchBar/SearchBar";
 import Users from "./components/Users/Users";
+import NoResults from "./components/NoResults/NoResults";
 
-const API_URL = "https://users-app-backend.onrender.com/users";
+const API_URL = "https://users-app-backend.onrender.com";
 
 function App() {
   const [userData, setUserData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [expanded, setExpanded] = useState([]);
+  const [searchInput, setSearchInput] = useState("");
 
   useEffect(() => {
     async function fetchData() {
       try {
         setError("");
         setLoading(true);
-        const response = await fetch(`${API_URL}`);
+        const response = await fetch(`${API_URL}/users`);
         const json = await response.json();
         const { error, data } = json;
 
@@ -59,8 +61,6 @@ function App() {
 
   //Search
 
-  const [searchInput, setSearchInput] = useState("");
-
   const handleChange = (e) => {
     setSearchInput(e.target.value);
   };
@@ -70,10 +70,12 @@ function App() {
   if (searchInput) {
     dataDisplay = userData.filter((el) => {
       const { name, country, company } = el;
-
-      const userInfo = `${name} ${company} ${country}`.toLowerCase();
-
-      return userInfo.includes(searchInput.toLowerCase());
+  
+      const searchLowerCase = searchInput.toLowerCase();
+  
+      return name.toLowerCase().includes(searchLowerCase) ||
+             country.toLowerCase().includes(searchLowerCase) ||
+             company.toLowerCase().includes(searchLowerCase);
     });
   }
 
@@ -84,7 +86,9 @@ function App() {
       return <Loading />;
     } else if (error) {
       return <Error error={error} />;
-    } else {
+    } else if (!dataDisplay.length) {
+      return <NoResults searchInput={searchInput} />;
+    }else {
       return (
         <Users
           users={dataDisplay}
