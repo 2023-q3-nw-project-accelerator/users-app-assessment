@@ -24,3 +24,38 @@
     font-weight: 900;
     font-size: 1.5rem;
 }
+
+@media screen and  (max-width: 400px){
+    .User{
+        display: grid;
+        grid-template-columns: 1fr;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        border: 1px dashed blue;
+        border-radius: 5px;
+        width: 50%;
+        margin: 1rem;
+        padding: 3rem ;
+    }
+    .User__avatar  img {
+        width: 50%; 
+    }
+
+    .User ul {
+        display: grid;
+        justify-content: center;
+        align-self: center; 
+        list-style-type: none;
+        padding-inline-start: 0;
+    }
+
+    .User__controls {
+        display: grid;
+        justify-content: center;
+        align-items: center;
+        padding: 0;
+        margin: auto;
+    }
+
+}
