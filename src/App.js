@@ -88,7 +88,6 @@ function App() {
     } else {
       return (
         <Users
-          input={input}
           users={dataToDisplay}
           expanded={expanded}
           handleToggleExpanded={handleToggleExpanded}
