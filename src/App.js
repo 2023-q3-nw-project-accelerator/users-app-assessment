@@ -7,7 +7,6 @@ import OnLoading from './components/OnLoading/OnLoading';
 import fe_ from './fetch_';
 ////////////////////////////////////////////////
 function App() {
-  // TODO: Fetch data here
   const [users, setUsers] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState("");
