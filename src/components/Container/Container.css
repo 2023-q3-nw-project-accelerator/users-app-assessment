@@ -1,0 +1,27 @@
+.Container {
+  width: 60vw;
+  height: 80vh;
+}
+
+.Container--center {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+}
+
+.Container--loading {
+  background-color: #1fa438;
+  font-size: x-large;
+}
+
+.Container--error {
+  background-color: rgb(131, 36, 36);
+}
+
+@media screen and (max-width: 580px) {
+  .Container {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+  }
+}
