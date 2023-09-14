@@ -1,0 +1,9 @@
+.search-bar-div{
+  display: flex;
+  flex-direction: row;
+  gap: 3px;
+}
+
+.search-bar-div > .flex-grow{
+  flex-grow: 1;
+}
